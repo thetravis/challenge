@@ -10,7 +10,7 @@
 <script type="text/javascript" src="static/js/jquery-3.1.1.min.js" async="true"></script>
 <script type="text/javascript" src="static/js/action.js" async="true"></script>
 </head>
-<body onload="update();">
+<body onload="update()" ng-controller="catalogCtrl">
 
 <h1>Catalog</h1>
 
@@ -23,12 +23,12 @@
     <th align="left">
     <div class="ontop" id="search">
       <form id="searchForm">
-	<label for="searchText" class="sr-only">Search:</label> 
+	<label for="searchText" class="ontop">Search:</label> 
 	<input type="text" id="searchCriteria" name="searchText" ng-model="searchCriteria" ng-change="search(searchCriteria)" placeholder="Write something..." onkeypress="keypress(event)"> 
 	<input type="button" id="searchBtn" value="Search" onClick="search(document.getElementById('searchCriteria').value)">
       </form></div>
       <div class="ontop" id="sortby">
-      <label for="sort_by" class="sr-only">Sort by:</label> 
+      <label for="sort_by" class="ontop">Sort by:</label> 
       <select selected="price" id="sort_by" onchange="update()">
                             <option id="price">price</option>
                             <option id="name">name</option>
