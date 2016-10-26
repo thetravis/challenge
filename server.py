@@ -41,7 +41,7 @@ Search in the database
 @server.route("/catalog/search",methods=['GET','POST'])
 @server.route("/catalog/search/",methods=['GET','POST'])
 @server.route("/catalog/search/<string:searchCriteria>",methods=['GET','POST'])
-def search(searchCriteria="%"):
+def search(searchCriteria=""):
   return catalog.search(searchCriteria)
 
 '''

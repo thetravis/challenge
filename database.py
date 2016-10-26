@@ -19,14 +19,11 @@ class Database():
   # Search from database
   
   def search(self, searchCriteria):
-    # WHY THE HELL DOESN'T THIS WORK:
-      # search_stmt = ("SELECT * FROM product WHERE name LIKE %s")
-      # data = (str(searchCriteria))
-      # self.cursor.execute(search_stmt, data)
-    # BUT THIS WORKS:
-    search_stmt = "SELECT * FROM product WHERE name LIKE '" + searchCriteria + "%'" 
-    self.cursor.execute(search_stmt)
-    # I HAVE NO F***ING CLUE BUT LET'S JUST FETCH 'EM ALL
+    if searchCriteria == "":
+       searchCriteria = "%"
+    search_stmt = "SELECT * FROM product WHERE name LIKE (%s)"
+    data = [str(searchCriteria)+"%"]
+    self.cursor.execute(search_stmt, data)
     products = self.cursor.fetchall()
     return products
     
