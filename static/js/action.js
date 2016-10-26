@@ -7,7 +7,7 @@
 // General TODO: exceptions handling
 
 // simple ajax library for reading files
-// TODO: Don't copy and paste, write it yourself 
+// TODO: Don't copy and paste, write it yourself
 
 function IO(U, V) {//LA MOD String Version. A tiny ajax library.  by, DanDavis
            var X = !window.XMLHttpRequest ? new ActiveXObject('Microsoft.XMLHTTP') : new XMLHttpRequest();
@@ -73,8 +73,8 @@ function remove_product() {
 // TODO: Should use update(response) to update page with search results
         
 function search(searchCriteria) {
- 
-        $.ajax({
+
+  $.ajax({
             url: '/catalog/search/'+encodeURIComponent(searchCriteria),
             data: '' ,
             type: 'GET',
