@@ -1,0 +1,26 @@
+To set up the database use the following commands.
+
+On command line:
+
+mysql -u root -p 
+<type mysql root password>
+
+Then in mysql:
+
+CREATE USER 'server'@'%' IDENTIFIED BY 'radiobutton2';
+
+CREATE DATABASE catalog;
+
+GRANT ALL PRIVILEGES ON catalog.* TO 'server'@'%' WITH GRANT OPTION;
+
+CREATE TABLE `catalog`.`tbl_product` ( `product_id` BIGINT NULL AUTO_INCREMENT,
+ `product_name` VARCHAR(100) NULL,
+ `product_amount` BIGINT NULL,
+ `product_price` DOUBLE NULL, 
+ PRIMARY KEY (`product_id`));
+
+quit
+
+If succesful you can then login with:
+mysql -u server -p
+Enter password: radiobutton2

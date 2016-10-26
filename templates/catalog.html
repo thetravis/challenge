@@ -1,0 +1,68 @@
+<!-- The front-end of the catalog by Heikki Pitkänen 20.10.2016 v0.1 -->
+
+<!-- General TODO: Add functionality on JavaScript side -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href='/static/css/style.css' />
+<script type="text/javascript" src="static/js/action.js" async="true"></script>
+<script type="text/javascript" src="static/js/jquery-3.1.1.min.js" async="true"></script>
+</head>
+<body onload="update();">
+
+<h1>Catalog</h1>
+
+<!-- Table to contain buttons and forms for search and adding etc. -->
+
+<table style="width:80%" align="center" id="actionTable">
+  <tr>
+    <th></th>
+    <th></th>
+    <th align="left">
+    <div class="ontop" id="search">
+      <form id="searchForm" method="post">
+	<label for="searchText" class="sr-only">Search:</label> 
+	<input type="text" name="searchText" placeholder="Write something..." onkeypress="keypress(event)"> 
+	<input type="button" id="searchBtn" value="Search" onClick="search()">
+      </form></div>
+      <div class="ontop" id="sortby">
+      <label for="sort_by" class="sr-only">Sort by:</label> 
+      <select selected="price" id="sort_by" onchange="update()">
+                            <option id="price">price</option>
+                            <option id="name">name</option>
+      </select>
+      </div>
+      <div class="ontop" id="add_product">
+      <label for="addForm" class="sr-only">Add product:</label>
+      <form id="addForm" method="post">
+      <input type="text" name="addProductName" placeholder="Product" >
+      <input type="text" name="addProductAmount" placeholder="Amount" >
+      <input type="text" name="addProductPrice" placeholder="Price" >
+      <input type="button" id="searchBtn" value="Add" onClick="addProduct()">
+      </div>
+    </th>
+    <th></th>
+    </tr>
+</table>
+    
+<!-- Table that contains the products -->
+<!-- TODO: Contains just a dummy example. Add functionality on javascript side -->
+    
+<table style="width:80%" align="center" id="productTable">
+  <tr>
+    <th align="left">Product</th>
+    <th align="right">Amount</th> 
+    <th align="right">Price</th>
+    <th align="center">Edit</th>
+  </tr>
+  <tr>
+    <td align="left">Hammer</td>
+    <td align="right">500</td> 
+    <td align="right">10</td>
+    <td align="center"><input type="button" value="Edit" onclick="edit_product()"> <input type="button" value="Remove" onclick="remove_product()"></td>
+  </tr>
+</table>
+
+</body>
+</html>

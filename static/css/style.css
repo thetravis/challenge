@@ -1,0 +1,17 @@
+/*Simple .css file to change the colors of the catalog and front pages. 
+Mainly used for debugging.*/
+
+body {
+    background: rgb(230, 230, 230);
+    color: rgb(0,0,255);
+}
+
+form {
+    background: rgb(230, 230, 230);
+    color: rgb(0,0,255);
+}
+
+select {
+    background: rgb(230, 230, 230);
+    color: rgb(0,0,0);
+}
