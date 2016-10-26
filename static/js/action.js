@@ -27,18 +27,7 @@ function keypress(e){
         }
     }
     
-var catalog = angular.module("catalog", []);
-
-catalog.controller('catalogCtrl', catalogCtrl);
-
-function catalogCtrl($scope, $http) {
-    function updateView() {
-      $http.get("phonebook/person/search/").then(function(response) {
-            $scope.searchResults = response.data;
-	});
-    }
-}
-    
+   
 // Function to add products in the catalog
 // TODO: draw the response on the screen
     
@@ -59,7 +48,7 @@ function addProduct() {
 
 // Function to update page when search/sorting changes
 // TODO: Yet to be implemented
-// param products list of products that are shown
+// @param products list of products that are shown
     
 function update(products) {
 
@@ -69,7 +58,6 @@ function update(products) {
 // Function to edit products 
 // TODO: move onto another page
 // TODO: How am I going to bind the product with its id? json? 
-// TODO: Google 'how to use json to get data from database'
         
 function edit_product() {
   
@@ -83,9 +71,7 @@ function remove_product() {
 }
 
 // Function to search from database
-// TODO: Implementation on back-end side
-// TODO: Should use update(response) to update page 
-// 	 with search results
+// TODO: Should use update(response) to update page with search results
         
 function search(searchCriteria) {
  
@@ -101,3 +87,26 @@ function search(searchCriteria) {
             }
         });
     }
+    
+// This is some AngularJS BS that is not used yet
+// 
+// var catalog = angular.module("catalog", []);
+// 
+// catalog.controller('catalogCtrl', catalogCtrl);
+// 
+// function catalogCtrl($scope, $http) {
+//     function updateView() {
+//       $http.get("/catalog/search/").then(function(response) {
+//             $scope.searchResults = response.data;
+// 	});
+//     }
+//     updateView();
+//     $scope.searchCriteria = "";
+//     $scope.search = function(searchCriteria) {
+// 	$http.get("/catalog/search/"+encodeURIComponent(searchCriteria)).then(function(response) {
+//             $scope.searchResults = response.data;
+// 	},function(response){
+// 	    console.log(response)
+// 	});
+//     };
+// } 
