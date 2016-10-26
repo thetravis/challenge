@@ -37,8 +37,8 @@ class Database():
     return "Addded " + name + " " + amount + " " + price
   
   def remove(id):
-    insert_stmt = ("DELETE FROM product WHERE id=%s" )
-    data = (id)
+    insert_stmt = "DELETE FROM product WHERE id=%s"
+    data = [id]
     self.cursor.execute(remove_stmt, data)
     self.conn.commit()
     return "Removed " + id
