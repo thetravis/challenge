@@ -13,11 +13,15 @@ CREATE DATABASE catalog;
 
 GRANT ALL PRIVILEGES ON catalog.* TO 'server'@'%' WITH GRANT OPTION;
 
-CREATE TABLE `catalog`.`tbl_product` ( `product_id` BIGINT NULL AUTO_INCREMENT,
- `product_name` VARCHAR(100) NULL,
- `product_amount` BIGINT NULL,
- `product_price` DOUBLE NULL, 
- PRIMARY KEY (`product_id`));
+CREATE TABLE `catalog`.`product` ( 
+ `id` BIGINT NULL AUTO_INCREMENT,
+ `name` VARCHAR(100) NULL,
+ `amount` BIGINT NULL,
+ `price` DOUBLE NULL, 
+ PRIMARY KEY (`id`));
+
+For testing insert one product  
+INSERT product (name,amount,price) VALUES ("Hammer", 100, 10);
 
 quit
 

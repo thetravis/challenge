@@ -27,6 +27,18 @@ function keypress(e){
         }
     }
     
+var catalog = angular.module("catalog", []);
+
+catalog.controller('catalogCtrl', catalogCtrl);
+
+function catalogCtrl($scope, $http) {
+    function updateView() {
+      $http.get("phonebook/person/search/").then(function(response) {
+            $scope.searchResults = response.data;
+	});
+    }
+}
+    
 // Function to add products in the catalog
 // TODO: draw the response on the screen
     
@@ -75,12 +87,12 @@ function remove_product() {
 // TODO: Should use update(response) to update page 
 // 	 with search results
         
-function search() {
+function search(searchCriteria) {
  
         $.ajax({
-            url: '/catalog',
-            data: $('form').serialize(),
-            type: 'POST',
+            url: '/catalog/search/'+encodeURIComponent(searchCriteria),
+            data: '' ,
+            type: 'GET',
             success: function(response) {
                 console.log(response);
             },

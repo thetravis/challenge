@@ -6,8 +6,9 @@
 <html>
 <head>
 <link rel="stylesheet" href='/static/css/style.css' />
-<script type="text/javascript" src="static/js/action.js" async="true"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
 <script type="text/javascript" src="static/js/jquery-3.1.1.min.js" async="true"></script>
+<script type="text/javascript" src="static/js/action.js" async="true"></script>
 </head>
 <body onload="update();">
 
@@ -21,10 +22,10 @@
     <th></th>
     <th align="left">
     <div class="ontop" id="search">
-      <form id="searchForm" method="post">
+      <form id="searchForm">
 	<label for="searchText" class="sr-only">Search:</label> 
-	<input type="text" name="searchText" placeholder="Write something..." onkeypress="keypress(event)"> 
-	<input type="button" id="searchBtn" value="Search" onClick="search()">
+	<input type="text" id="searchCriteria" name="searchText" ng-model="searchCriteria" ng-change="search(searchCriteria)" placeholder="Write something..." onkeypress="keypress(event)"> 
+	<input type="button" id="searchBtn" value="Search" onClick="search(document.getElementById('searchCriteria').value)">
       </form></div>
       <div class="ontop" id="sortby">
       <label for="sort_by" class="sr-only">Sort by:</label> 
@@ -35,7 +36,7 @@
       </div>
       <div class="ontop" id="add_product">
       <label for="addForm" class="sr-only">Add product:</label>
-      <form id="addForm" method="post">
+      <form id="addForm">
       <input type="text" name="addProductName" placeholder="Product" >
       <input type="text" name="addProductAmount" placeholder="Amount" >
       <input type="text" name="addProductPrice" placeholder="Price" >
