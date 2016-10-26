@@ -26,14 +26,13 @@ function keypress(e){
 	    search();
         }
     }
-    
    
 // Function to add products in the catalog
 // TODO: draw the response on the screen
     
     
 function addProduct() {
-        $.ajax({
+	$.ajax({
             url: '/catalog/add',
             data: $('form').serialize(),
             type: 'POST',
