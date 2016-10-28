@@ -4,6 +4,9 @@ import mysql.connector
 from mysql.connector import errorcode
 
 class Database():
+  
+  # Initialize databe with connection to MySQL 
+  
   def __init__(self, name="Database"):
     config = {
       'user': 'server',
@@ -24,8 +27,8 @@ class Database():
     search_stmt = "SELECT * FROM product WHERE name LIKE (%s)"
     data = [str(searchCriteria)+"%"]
     self.cursor.execute(search_stmt, data)
-    products = self.cursor.fetchall()
-    return products
+    searchResult = self.cursor.fetchall()
+    return searchResult
     
   # Add product to database
   
@@ -36,6 +39,8 @@ class Database():
     self.conn.commit()
     return "Addded " + name + " " + amount + " " + price
   
+  # Remove product from the database
+    
   def remove(id):
     insert_stmt = "DELETE FROM product WHERE id=%s"
     data = [id]

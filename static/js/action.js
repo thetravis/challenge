@@ -2,7 +2,7 @@
 // Contains the functions that are called by ../templates/catalog.html
 // or ../templates/frontpage.html
 
-// General TODO: Use json to move the data 
+// General TODO: Use json to move the data
 // General TODO: unit testing
 // General TODO: exceptions handling
 
