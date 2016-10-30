@@ -41,8 +41,10 @@ Search in the database
 @server.route("/catalog/search",methods=['GET','POST'])
 @server.route("/catalog/search/",methods=['GET','POST'])
 @server.route("/catalog/search/<string:searchCriteria>",methods=['GET','POST'])
-def search(searchCriteria=""):
-  return catalog.search(searchCriteria)
+@server.route("/catalog/search//<string:sorting>",methods=['GET','POST'])
+@server.route("/catalog/search/<string:searchCriteria>/<string:sorting>",methods=['GET','POST'])
+def search(searchCriteria="", sorting=""):
+  return catalog.search(searchCriteria, sorting)
 
 '''
 Route for the catalog page. 
@@ -66,8 +68,13 @@ def add():
       price = request.form.get('addProductPrice', "Couldn't find the addProductPrice")
       # TODO add the product into the database and return the the successfullness
       return catalog.add(name, amount, price)
-    if request.method == 'GET':
+    else: 
       return render_template("catalog.html")
+
+@server.route("/catalog/remove/<string:prod_id>",methods=['GET'])
+def remove(prod_id):
+    return catalog.removeProduct(prod_id);
+
 
 '''
 Returns the front page

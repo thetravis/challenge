@@ -10,8 +10,8 @@ class Catalog():
   
   # Search from catalog
   
-  def search(self, searchCriteria):
-    return json.dumps(self.database.search(searchCriteria))
+  def search(self, searchCriteria, sorting):
+    return json.dumps(self.database.search(searchCriteria, sorting))
   
   # Add product into catalog
   
@@ -20,8 +20,8 @@ class Catalog():
   
   # Remove product from catalog based on id
   
-  def remove(self, id):
-    return json.dumps(self.database.remove(id))
+  def removeProduct(self, prod_id):
+    return json.dumps(self.database.remove(prod_id))
   
   # Edit product. This actually adds new product with 
   # edited data and removes the old one 

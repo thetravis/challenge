@@ -3,6 +3,8 @@
 import mysql.connector
 from mysql.connector import errorcode
 
+# TODO consider the possibilities of abusing the database with SQL injection
+
 class Database():
   
   # Initialize databe with connection to MySQL 
@@ -21,10 +23,13 @@ class Database():
   
   # Search from database
   
-  def search(self, searchCriteria):
+  def search(self, searchCriteria, sorting="name"):
     if searchCriteria == "":
        searchCriteria = "%"
-    search_stmt = "SELECT * FROM product WHERE name LIKE (%s)"
+    if sorting == "name":
+      search_stmt = "SELECT * FROM product WHERE name LIKE (%s) ORDER BY name"
+    if sorting == "price":
+      search_stmt = "SELECT * FROM product WHERE name LIKE (%s) ORDER BY price"
     data = [str(searchCriteria)+"%"]
     self.cursor.execute(search_stmt, data)
     searchResult = self.cursor.fetchall()
@@ -41,11 +46,14 @@ class Database():
   
   # Remove product from the database
     
-  def remove(id):
-    insert_stmt = "DELETE FROM product WHERE id=%s"
-    data = [id]
+  def remove(self,prod_id):
+    remove_stmt = "DELETE FROM product WHERE id=%s"
+    data = [prod_id]
     self.cursor.execute(remove_stmt, data)
     self.conn.commit()
-    return "Removed " + id
+    return "Removed " + prod_id
+    
+
+  
   
   

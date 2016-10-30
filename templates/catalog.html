@@ -11,7 +11,7 @@
 <head>
 <title>Catalog</title>
 </head>
-<body onload="update()" ng-controller="catalogCtrl">
+<body onload="search('','name')" ng-controller="catalogCtrl">
 
 <h1>Catalog</h1>
 
@@ -25,14 +25,14 @@
     <div class="ontop" id="search">
       <form id="searchForm">
 	<label for="searchText" class="ontop">Search:</label> 
-	<input type="text" id="searchCriteria" name="searchText" ng-model="searchCriteria" ng-change="search(searchCriteria)" placeholder="Write something..." onkeypress="keypress(event)"> 
-	<input type="button" id="searchBtn" value="Search" onClick="search(document.getElementById('searchCriteria').value)">
+	<input type="text" id="searchCriteria" name="searchText" ng-model="searchCriteria" ng-change="update()" placeholder="Write something..." onkeypress="keypress(event)"> 
+	<input type="button" id="searchBtn" value="Search" onClick="update()">
       </form></div>
       <div class="ontop" id="sortby">
       <label for="sort_by" class="ontop">Sort by:</label> 
-      <select selected="price" id="sort_by" onchange="update()">
-                            <option id="price">price</option>
+      <select selected="name" id="sort_by" onchange="update()">
                             <option id="name">name</option>
+                            <option id="price">price</option>
       </select>
       </div>
       <div class="ontop" id="add_product">
@@ -53,17 +53,21 @@
     
 <table style="width:80%" align="center" id="productTable">
   <tr>
+   <thead>
     <th align="left">Product</th>
-    <th align="right">Amount</th> 
-    <th align="right">Price</th>
-    <th align="center">Edit</th>
+    <th align="left">Amount</th> 
+    <th align="left">Price</th>
+    <th align="left">Edit</th>
+   </thead> 
   </tr>
-  <tr>
+  <tbody id="productTableBody">
+  </tbody>
+<!--  <tr>
     <td align="left">Hammer</td>
     <td align="right">500</td> 
     <td align="right">10</td>
-    <td align="center"><input type="button" value="Edit" onclick="edit_product()"> <input type="button" value="Remove" onclick="remove_product()"></td>
-  </tr>
+    <td align="center"></td>
+  </tr>-->
 </table>
 
 </body>
