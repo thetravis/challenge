@@ -28,8 +28,18 @@ class Database():
        searchCriteria = "%"
     if sorting == "name":
       search_stmt = "SELECT * FROM product WHERE name LIKE (%s) ORDER BY name"
-    if sorting == "price":
+    elif sorting == "amount (ascending)":
+	search_stmt = "SELECT * FROM product WHERE name LIKE (%s) ORDER BY amount"
+    elif sorting == "price (ascending)":
       search_stmt = "SELECT * FROM product WHERE name LIKE (%s) ORDER BY price"
+    elif sorting == "amount (descending)":
+	search_stmt = "SELECT * FROM product WHERE name LIKE (%s) ORDER BY amount DESC"
+    elif sorting == "price (descending)":
+      search_stmt = "SELECT * FROM product WHERE name LIKE (%s) ORDER BY price DESC"    
+    
+    else:
+      search_stmt = "SELECT * FROM product WHERE name LIKE (%s) ORDER BY name"
+      
     data = [str(searchCriteria)+"%"]
     self.cursor.execute(search_stmt, data)
     searchResult = self.cursor.fetchall()

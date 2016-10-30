@@ -12,6 +12,7 @@
 from flask import Flask, render_template, request, json
 from flaskext.mysql import MySQL
 from catalog import Catalog
+import urllib
 
 import sys  
 reload(sys)  
@@ -43,7 +44,7 @@ Search in the database
 @server.route("/catalog/search//<string:sorting>",methods=['GET','POST'])
 @server.route("/catalog/search/<string:searchCriteria>/<string:sorting>",methods=['GET','POST'])
 def search(searchCriteria="", sorting=""):
-  return catalog.search(searchCriteria, sorting)
+  return catalog.search(urllib.unquote(searchCriteria), urllib.unquote(sorting))
 
 '''
 Route for the catalog page. 
