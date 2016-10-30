@@ -29,7 +29,7 @@ function keypress(e){
    
 // Function to add products in the catalog
 // TODO: draw the response on the screen
-    
+   
     
 function addProduct() {
 	$.ajax({
@@ -47,7 +47,6 @@ function addProduct() {
 }
 
 // Function to update page when search/sorting changes
-// @param products list of products that are shown
     
 function update() {
   var sorting = document.getElementById("sort_by")
@@ -59,12 +58,11 @@ function update() {
 // TODO: move onto another page
 // TODO: How am I going to bind the product with its id? json? 
         
-function edit_product() {
-  
+function edit_product(id) {
+  console.log("TODO: Edit product " + id)
 }
 
 // Function to remove remove product from catalog
-// TODO: Yet to be implemented
 
 function remove_product(id) {
   console.log("Remove " + id)
@@ -83,7 +81,6 @@ function remove_product(id) {
 }
 
 // Function to search from database
-// TODO: Should use update(response) to update page with search results
         
 function search(searchCriteria, sorting) {
 
@@ -107,7 +104,7 @@ function search(searchCriteria, sorting) {
 		 cell1.innerHTML = searchResults[i][1];
 		 cell2.innerHTML = searchResults[i][2];
 		 cell3.innerHTML = searchResults[i][3];
-		 cell4.innerHTML = '<input type="button" value="Edit" onclick="edit_product()"> <input type="button" value="Remove" onclick="remove_product(' + searchResults[i][0] + ')">'
+		 cell4.innerHTML = '<input type="button" value="Edit" onclick="edit_product(' + searchResults[i][0] + ')"> <input type="button" value="Remove" onclick="remove_product(' + searchResults[i][0] + ')">'
 		}
 		 old_tbody.parentNode.replaceChild(new_tbody, old_tbody)
             },

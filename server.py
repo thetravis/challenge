@@ -6,7 +6,6 @@
  and edit (TODO) calls by the front-end UI.
 '''
 
-# General TODO: MySQL implementations for adding, searching and editing products.
 # General TODO: unit testing
 # General TODO: exceptions handling 
 
