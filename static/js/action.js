@@ -20,11 +20,19 @@ function IO(U, V) {//LA MOD String Version. A tiny ajax library.  by, DanDavis
 // Do the search when pressing Enter on the text field
 // TODO: Should be able to add a function that is called on Enter 
         
-function keypress(e){
+function keypress(e, f){
+  if(f == 'search' ) {
         if(e.keyCode === 13){
             e.preventDefault(); // Ensure it is only this code that rusn
 	    update();
         }
+  }
+  if(f == 'add' ) {
+        if(e.keyCode === 13){
+            e.preventDefault(); // Ensure it is only this code that rusn
+	    addProduct();
+        }    
+  }
     }
    
 // Function to add products in the catalog
@@ -32,26 +40,30 @@ function keypress(e){
    
     
 function addProduct() {
-	$.ajax({
-            url: '/catalog/add',
-            data: $('form').serialize(),
-            type: 'POST',
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
-	update()
+  $.ajax({
+     url: '/catalog/add',
+     data: $('form').serialize(),
+     type: 'POST',
+     success: function(response) {
+         console.log(response);
+     },
+     error: function(error) {
+         console.log(error);
+     }
+  });
+  document.getElementById("addProductName").value = ""
+  document.getElementById("addProductAmount").value = ""
+  document.getElementById("addProductPrice").value = ""
+  update()
 }
 
-// Function to update page when search/sorting changes
+// Function to update page when search/sorting changes or after addition, editions and deletions 
     
 function update() {
   var sorting = document.getElementById("sort_by")
   var selection = sorting.options[sorting.selectedIndex].value
-  search(document.getElementById('searchCriteria').value, selection)
+  var searchCriteria = document.getElementById('searchCriteria').value
+  search(searchCriteria, selection)
 }
 
 // Function to edit products 
@@ -59,12 +71,15 @@ function update() {
 // TODO: How am I going to bind the product with its id? json? 
         
 function edit_product(id) {
+  
   console.log("TODO: Edit product " + id)
+  
+  update()
 }
 
 // Function to remove remove product from catalog
 
-function remove_product(id) {
+function removeProduct(id) {
   console.log("Remove " + id)
   $.ajax({
     url: '/catalog/remove/' + encodeURIComponent(id),
@@ -81,6 +96,8 @@ function remove_product(id) {
 }
 
 // Function to search from database
+// Updates the product list with search results corresponding to
+// user input of search and sorting selection.
         
 function search(searchCriteria, sorting) {
 
@@ -104,7 +121,7 @@ function search(searchCriteria, sorting) {
 		 cell1.innerHTML = searchResults[i][1];
 		 cell2.innerHTML = searchResults[i][2];
 		 cell3.innerHTML = searchResults[i][3];
-		 cell4.innerHTML = '<input type="button" value="Edit" onclick="edit_product(' + searchResults[i][0] + ')"> <input type="button" value="Remove" onclick="remove_product(' + searchResults[i][0] + ')">'
+		 cell4.innerHTML = '<input type="button" value="Edit" onclick="edit_product(' + searchResults[i][0] + ')"> <input type="button" value="Remove" onclick="removeProduct(' + searchResults[i][0] + ')">'
 		}
 		 old_tbody.parentNode.replaceChild(new_tbody, old_tbody)
             },

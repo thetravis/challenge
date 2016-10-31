@@ -25,7 +25,7 @@
     <div class="ontop" id="search">
       <form id="searchForm">
 	<label for="searchText" class="ontop">Search:</label> 
-	<input type="text" id="searchCriteria" name="searchText" ng-model="searchCriteria" ng-change="update()" placeholder="Write something..." onkeypress="keypress(event)"> 
+	<input type="text" id="searchCriteria" name="searchText" ng-model="searchCriteria" ng-change="update()" placeholder="Write something..." onkeypress="keypress(event, 'search')"> 
 	<input type="button" id="searchBtn" value="Search" onClick="update()">
       </form></div>
       <div class="ontop" id="sortby">
@@ -41,10 +41,10 @@
       <div class="ontop" id="add_product">
       <label for="addForm" class="sr-only">Add product:</label>
       <form id="addForm">
-      <input type="text" id="addProductName" name="addProductName" placeholder="Product" >
-      <input type="text" id="addProductAmount" name="addProductAmount" placeholder="Amount" >
-      <input type="text" id="addProductPrice"  name="addProductPrice" placeholder="Price" >
-      <input type="button" id="searchBtn" value="Add" onClick="addProduct()">
+	<input type="text" id="addProductName" name="addProductName" placeholder="Product" onkeypress="keypress(event, 'add')">
+	<input type="text" id="addProductAmount" name="addProductAmount" placeholder="Amount" onkeypress="keypress(event, 'add')">
+	<input type="text" id="addProductPrice"  name="addProductPrice" placeholder="Price" onkeypress="keypress(event, 'add')">
+	<input type="button" id="searchBtn" value="Add" onClick="addProduct()">
       </div>
     </th>
     <th></th>
