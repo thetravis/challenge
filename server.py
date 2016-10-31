@@ -66,15 +66,17 @@ def add():
       name = request.form.get('addProductName', "Couldn't find addProductName")
       amount = request.form.get('addProductAmount', "Couldn't find the addProductAmount")
       price = request.form.get('addProductPrice', "Couldn't find the addProductPrice")
-      # TODO add the product into the database and return the the successfullness
+      # TODO return something is unsuccessful
       return catalog.add(name, amount, price)
-    else: 
-      return render_template("catalog.html")
+
+'''
+Remove a product matching to an id
+'''
 
 @server.route("/catalog/remove/<string:prod_id>",methods=['GET'])
 def remove(prod_id):
-    return catalog.removeProduct(prod_id);
-
+  # TODO return something if unsuccessful
+  return catalog.removeProduct(prod_id);
 
 '''
 Returns the front page

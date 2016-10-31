@@ -26,8 +26,10 @@ class Database():
   def search(self, searchCriteria, sorting="name"):
     if searchCriteria == "":
        searchCriteria = "%"
-    if sorting == "name":
+    if sorting == "name (ascending)":
       search_stmt = "SELECT * FROM product WHERE name LIKE (%s) ORDER BY name"
+    if sorting == "name (descending)":
+      search_stmt = "SELECT * FROM product WHERE name LIKE (%s) ORDER BY name DESC"
     elif sorting == "amount (ascending)":
 	search_stmt = "SELECT * FROM product WHERE name LIKE (%s) ORDER BY amount"
     elif sorting == "price (ascending)":
@@ -36,7 +38,6 @@ class Database():
 	search_stmt = "SELECT * FROM product WHERE name LIKE (%s) ORDER BY amount DESC"
     elif sorting == "price (descending)":
       search_stmt = "SELECT * FROM product WHERE name LIKE (%s) ORDER BY price DESC"    
-    
     else:
       search_stmt = "SELECT * FROM product WHERE name LIKE (%s) ORDER BY name"
       
