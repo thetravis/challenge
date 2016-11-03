@@ -1,11 +1,19 @@
 # challenge
-An example of a catalog with web user interface based on a Python Flask server
+An example of a product catalog with web user interface (HTML + JS) running on a Python Flask server using MySQL database.
 
-See mysql_setup.txt to create the database (this will be automated later when I've had enough coffee) and then run (in Debian-like OS 'sudo' may be needed)
+Installation:
 
-apt-get install python-pip
+Start with installing MySQL server
 
-pip install -r requirements.txt 
+sudo apt-get install mysql-server
+
+Then see mysql_setup.txt to create the database (this will be automated later when I've had enough coffee) 
+
+Then run (in Debian-like OS 'sudo' may be needed)
+
+sudo apt-get install python-pip
+
+sudo pip install -r requirements.txt 
 
 python server.py
 
