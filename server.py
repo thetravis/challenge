@@ -70,6 +70,7 @@ def add():
 
 '''
 Remove a product matching to an id
+TODO: Should return "succes" or "failure"
 '''
 
 @server.route("/catalog/remove/<string:prod_id>",methods=['GET'])

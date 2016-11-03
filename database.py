@@ -7,7 +7,7 @@ from mysql.connector import errorcode
 
 class Database():
   
-  # Initialize databe with connection to MySQL 
+  # Initialize database with connection to MySQL 
   
   def __init__(self, name="Database"):
     config = {
