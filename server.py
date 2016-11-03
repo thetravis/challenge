@@ -10,7 +10,6 @@
 # General TODO: exceptions handling 
 
 from flask import Flask, render_template, request, json
-from flaskext.mysql import MySQL
 from catalog import Catalog
 import urllib
 
