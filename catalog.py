@@ -29,7 +29,7 @@ class Catalog():
   # the old and adding new? 
   
   def edit(id, newname, newamount, newprice):
-    self.add(newname, newamount, newprice)
-    self.database.remove(id)
-    return json.dumps("Product edited")
+    addition = self.add(newname, newamount, newprice)
+    removal = self.database.remove(id)
+    return json.dumps(addition + "\n" + removal)
     

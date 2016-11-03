@@ -38,11 +38,11 @@ def catalogpagexy(x,y):
 Search in the database
 '''
 
-@server.route("/catalog/search",methods=['GET','POST'])
-@server.route("/catalog/search/",methods=['GET','POST'])
-@server.route("/catalog/search/<string:searchCriteria>",methods=['GET','POST'])
-@server.route("/catalog/search//<string:sorting>",methods=['GET','POST'])
-@server.route("/catalog/search/<string:searchCriteria>/<string:sorting>",methods=['GET','POST'])
+@server.route("/catalog/search",methods=['GET'])
+@server.route("/catalog/search/",methods=['GET'])
+@server.route("/catalog/search/<string:searchCriteria>",methods=['GET'])
+@server.route("/catalog/search//<string:sorting>",methods=['GET'])
+@server.route("/catalog/search/<string:searchCriteria>/<string:sorting>",methods=['GET'])
 def search(searchCriteria="", sorting=""):
   return catalog.search(urllib.unquote(searchCriteria), urllib.unquote(sorting))
 

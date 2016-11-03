@@ -17,23 +17,25 @@ function IO(U, V) {//LA MOD String Version. A tiny ajax library.  by, DanDavis
             return X.responseText;
         }
 
-// Do the search when pressing Enter on the text field
-// TODO: Should be able to add a function that is called on Enter 
+// Do the search when pressing Enter (comment lines to use anything) on the text field
+// TODO: Should be able to add a function that is called on Enter/input
+// TODO: Fetching data from server on every keypress seems pretty hard/expensive. Limit to Enter only
+// TODO: use keyup for instant search
         
-function keypress(e, f){
+function keypress(e, f){ // Do the search when pressing enter
   if(f == 'search' ) {
-        if(e.keyCode === 13){
-            e.preventDefault(); // Ensure it is only this code that rusn
-	    update();
-        }
+        if(e.keyCode === 13){ // comment to use any key for search
+             e.preventDefault(); // Ensure it is only this code that runs // comment to use any key for search
+	     update(); 
+            } // comment to use any key for search
   }
-  if(f == 'add' ) {
+  if(f == 'add' ) { // Addition only when pressing enter
         if(e.keyCode === 13){
-            e.preventDefault(); // Ensure it is only this code that rusn
-	    addProduct();
+          e.preventDefault(); // Ensure it is only this code that runs
+	     addProduct();
         }    
   }
-    }
+}
    
 // Function to add products in the catalog
 // TODO: draw the response on the screen
@@ -51,6 +53,7 @@ function addProduct() {
          console.log(error);
      }
   });
+  document.getElementById("searchCriteria").value = document.getElementById("addProductName").value
   document.getElementById("addProductName").value = ""
   document.getElementById("addProductAmount").value = ""
   document.getElementById("addProductPrice").value = ""
