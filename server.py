@@ -60,22 +60,22 @@ TODO: Should return "success" or "failure"
     
 @server.route("/catalog/add",methods=['POST'])
 def add():
-    if request.method == 'POST':
-      # read the posted values from the UI
-      name = request.form.get('addProductName', "Couldn't find addProductName")
-      amount = request.form.get('addProductAmount', "Couldn't find the addProductAmount")
-      price = request.form.get('addProductPrice', "Couldn't find the addProductPrice")
-      # TODO return something is unsuccessful
-      return catalog.add(name, amount, price)
+  # read the posted values from the UI
+  name = request.form.get('addProductName', "Couldn't find addProductName")
+  amount = request.form.get('addProductAmount', "Couldn't find the addProductAmount")
+  price = request.form.get('addProductPrice', "Couldn't find the addProductPrice")
+  # TODO return something is unsuccessful
+  return catalog.add(name, amount, price)
 
 '''
 Remove a product matching to an id
 TODO: Should return "succes" or "failure"
 '''
 
-@server.route("/catalog/remove/<string:prod_id>",methods=['GET'])
-def remove(prod_id):
+@server.route("/catalog/remove/",methods=['POST'])
+def remove():
   # TODO return something if unsuccessful
+  prod_id = request.get_data()
   return catalog.removeProduct(prod_id);
 
 '''
@@ -84,7 +84,7 @@ Returns the front page
 
 @server.route("/")
 def frontpage():
-    return render_template("frontpage.html")
+   return render_template("frontpage.html")
 
 if __name__ == "__main__":
   server.run()

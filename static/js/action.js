@@ -53,7 +53,7 @@ function addProduct() {
          console.log(error);
      }
   });
-  document.getElementById("searchCriteria").value = document.getElementById("addProductName").value
+  //   document.getElementById("searchCriteria").value = document.getElementById("addProductName").value // to show only added product in the list
   document.getElementById("addProductName").value = ""
   document.getElementById("addProductAmount").value = ""
   document.getElementById("addProductPrice").value = ""
@@ -70,14 +70,21 @@ function update() {
 }
 
 // Function to edit products 
-// TODO: move onto another page
+// TODO: move onto another page or add new row for editing?
 // TODO: How am I going to bind the product with its id? json? 
         
-function edit_product(id) {
+function editProduct(id) {
   
   console.log("TODO: Edit product " + id)
+  old_product = fetchProduct(id)
   
   update()
+}
+
+// Function to fetch one product by its id
+
+function fetchProduct(id) {
+  
 }
 
 // Function to remove remove product from catalog
@@ -85,9 +92,9 @@ function edit_product(id) {
 function removeProduct(id) {
   console.log("Remove " + id)
   $.ajax({
-    url: '/catalog/remove/' + encodeURIComponent(id),
-    data: '',
-    type: 'GET',
+    url: '/catalog/remove/',
+    data: '' + id, // hnnngh, must be converted to string
+    type: 'POST',
     success: function(response) {
       console.log(response);
     },
@@ -124,7 +131,7 @@ function search(searchCriteria, sorting) {
 		 cell1.innerHTML = searchResults[i][1];
 		 cell2.innerHTML = searchResults[i][2];
 		 cell3.innerHTML = searchResults[i][3];
-		 cell4.innerHTML = '<input type="button" value="Edit" onclick="edit_product(' + searchResults[i][0] + ')"> <input type="button" value="Remove" onclick="removeProduct(' + searchResults[i][0] + ')">'
+		 cell4.innerHTML = '<input type="button" value="Edit" onclick="editProduct(' + searchResults[i][0] + ')"> <input type="button" value="Remove" onclick="removeProduct(' + searchResults[i][0] + ')">'
 		}
 		 old_tbody.parentNode.replaceChild(new_tbody, old_tbody)
             },
