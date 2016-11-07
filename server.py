@@ -13,6 +13,7 @@ from flask import Flask, render_template, request, json, send_from_directory
 from catalog import Catalog
 import urllib
 
+# For some reason this is needed to input scandinavian letters
 import sys  
 reload(sys)  
 sys.setdefaultencoding('utf8')
