@@ -9,7 +9,7 @@
 # General TODO: unit testing
 # General TODO: exceptions handling 
 
-from flask import Flask, render_template, request, json
+from flask import Flask, render_template, request, json, send_from_directory
 from catalog import Catalog
 import urllib
 
@@ -20,6 +20,12 @@ sys.setdefaultencoding('utf8')
 # Initialize the server and the catalog
 server = Flask(__name__)
 catalog = Catalog()
+    
+    
+@server.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.png', mimetype='image/png')    
     
 '''
 This is supposed to read the database and return it for AJAX

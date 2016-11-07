@@ -5,13 +5,14 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href='/static/css/style.css' />
+<link rel="shortcut icon" href="/static/images/favicon.png">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
 <script type="text/javascript" src="static/js/jquery-3.1.1.min.js" async="true"></script>
 <script type="text/javascript" src="static/js/action.js" async="true"></script>
 <head>
 <title>Catalog</title>
 </head>
-<body onload="search('','name')" ng-controller="catalogCtrl">
+<body onload="search('','name')">
 
 <h1>Catalog</h1>
 
@@ -25,7 +26,7 @@
     <div class="ontop" id="search">
       <form id="searchForm">
 	<label for="searchText" class="ontop">Search:</label> 
-	<input type="text" id="searchCriteria" name="searchText" ng-model="searchCriteria" ng-change="update()" placeholder="Write something..." onkeypress="keypress(event, 'search')"> 
+	<input type="text" id="searchCriteria" name="searchText" placeholder="Write something..." onkeypress="keypress(event, 'search')"> 
 	<input type="button" id="searchBtn" value="Search" onClick="update()">
       </form></div>
       <div class="ontop" id="sortby">
