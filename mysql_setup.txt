@@ -20,7 +20,8 @@ CREATE TABLE `catalog`.`product` (
  `price` DOUBLE NULL, 
  PRIMARY KEY (`id`));
 
-For testing insert one product  
+For testing insert one product:  
+use catalog
 INSERT product (name,amount,price) VALUES ("Hammer", 100, 10);
 
 quit
